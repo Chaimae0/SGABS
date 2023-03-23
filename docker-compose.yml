@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    db:
+        image: easy:v1
+        container_name: postgresql14
+        restart: always
+
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=admin
+          - POSTGRES_DB=mydb
+          - PATH=/usr/pgsql-14/bin
+          - PGDATA =/var/lib/postgresql/data/
+          
+        ports:
+          - '5432:5432'
+        volumes:
+          - .postgres-data:/var/lib/pgsql/data  
+          - .pgconfig/pg_hba.conf:/var/lib/pgsql/data/pg_hba.conf
+          
+    
+
+#/var/lib/pgsql/data
+#/usr/pgsql-14/bin
